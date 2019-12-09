@@ -4,13 +4,13 @@ The Storybook selector addon can be used to select and share config between stor
 [Framework Support](https://github.com/storybookjs/storybook/blob/master/ADDONS_SUPPORT.md)
 
 # Getting Started
-Install this addon by adding the `storybook-addon-selector` dependency from github:
+Install this addon by adding the `storybook-addon-selector` dependency:
 ```sh
-yarn add https://github.com/sijav/storybook-addon-selector
+yarn add storybook-addon-selector
 ```
 or
 ```sh
-npm install https://github.com/sijav/storybook-addon-selector
+npm install storybook-addon-selector
 ```
 
 First configure it as an addon by importing register and calling it to your addons.js file (located in the Storybook config directory).

@@ -1,5 +1,5 @@
 {
-  "name": "@sijav/storybook-addon-selector",
+  "name": "storybook-addon-selector",
   "version": "5.2.8-1",
   "description": "A storybook addon to have selector for your preview",
   "license": "MIT",
@@ -31,8 +31,5 @@
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
     "typescript": "^3.7.3"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
