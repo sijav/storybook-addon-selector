@@ -1,5 +1,5 @@
 {
-  "name": "storybook-addon-selector",
+  "name": "sijav/storybook-addon-selector",
   "version": "5.2.8-1",
   "description": "A storybook addon to have selector for your preview",
   "license": "MIT",
