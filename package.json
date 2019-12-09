@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-selector",
-  "version": "5.1.11.1",
+  "version": "5.2.8-1",
   "description": "A storybook addon to have selector for your preview",
   "license": "MIT",
   "main": "dist/index.js",
@@ -11,13 +11,14 @@
     "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "lint": "eslint --max-warnings=0 src/**/*.{ts,tsx}",
     "pre-commit": "lint-staged && yarn lint",
+    "prepublishOnly": "yarn build",
     "prebuild": "yarn clean",
     "build": "tsc"
   },
   "dependencies": {
-    "@storybook/addons": "5.2.0",
-    "@storybook/api": "5.2.0",
-    "@storybook/components": "5.2.0",
+    "@storybook/addons": "5.2.8",
+    "@storybook/api": "5.2.8",
+    "@storybook/components": "5.2.8",
     "react": "^16.8.3",
     "util-deprecate": "^1.0.2"
   },
@@ -30,5 +31,8 @@
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
     "typescript": "^3.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
