@@ -1,7 +1,7 @@
 # Story Selector Addon
 The Storybook selector addon can be used to select and share config between stories in Storybook.
 
-[Framework Support](https://github.com/storybookjs/storybook/blob/master/ADDONS_SUPPORT.md)
+[Framework Support same as backgrounds addon](https://github.com/storybookjs/storybook/blob/master/ADDONS_SUPPORT.md)
 
 ## Installation
 ```sh
