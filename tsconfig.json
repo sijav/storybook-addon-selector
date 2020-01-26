@@ -2,10 +2,11 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "types": ["webpack-env"],
-    "outDir": "./dist",
-    "declaration": true
+    "types": [
+      "webpack-env"
+    ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/__tests__/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

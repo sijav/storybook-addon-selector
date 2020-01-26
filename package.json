@@ -1,19 +1,12 @@
 {
   "name": "storybook-addon-selector",
-  "version": "5.2.8-2",
+  "version": "5.3.9-1",
   "description": "A storybook addon to have selector for your preview",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist",
+  "types": "dist",
   "scripts": {
-    "clean": "rimraf dist",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "lint": "eslint --max-warnings=0 src/**/*.{ts,tsx}",
-    "pre-commit": "lint-staged && yarn lint",
-    "prepublishOnly": "yarn build",
-    "prebuild": "yarn clean",
-    "build": "tsc"
+    "prepare": "node scripts/prepare.js"
   },
   "repository": {
     "type": "git",
@@ -25,20 +18,34 @@
   },
   "homepage": "https://github.com/sijav/storybook-addon-selector",
   "dependencies": {
-    "@storybook/addons": "5.2.8",
-    "@storybook/api": "5.2.8",
-    "@storybook/components": "5.2.8",
+    "@storybook/addons": "5.3.9",
+    "@storybook/api": "5.3.9",
+    "@storybook/components": "5.3.9",
     "react": "^16.8.3",
-    "util-deprecate": "^1.0.2"
+    "react-dom": "^16.8.3",
+    "regenerator-runtime": "^0.13.2"
   },
   "devDependencies": {
-    "@types/util-deprecate": "^1.0.0",
-    "@types/webpack-env": "^1.14.1",
-    "eslint": "^6.3.0",
-    "eslint-plugin-react-app": "^6.0.1",
-    "lint-staged": "^9.2.5",
-    "prettier": "^1.18.2",
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-flow": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/webpack": "^4.41.3",
+    "@types/webpack-env": "^1.15.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react-app": "^6.1.0",
+    "lint-staged": "^10.0.2",
+    "npmlog": "^4.1.2",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "typescript": "^3.7.3"
+    "shelljs": "^0.8.3",
+    "typescript": "^3.7.5"
   }
 }

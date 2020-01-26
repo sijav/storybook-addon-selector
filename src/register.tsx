@@ -1,18 +1,16 @@
-import React from 'react';
 import { addons, types } from '@storybook/addons';
+import React from 'react';
+import { Container } from './containers/Container';
+import { ADDON_ID } from './constants';
 
-import { Selector } from './containers/Selector';
-import { IconKey } from '@storybook/components/dist/icon/icons';
-
-export const register = (title: string, addonId: string, paramKey: string, titleDesc: string, icon: IconKey) => {
-  addons.register(addonId, api => {
-    addons.add(addonId, {
-      title,
-      type: types.TOOL,
-      match: ({ viewMode }) => viewMode === 'story',
-      render: () => (
-        <Selector api={api} addonId={addonId} title={title} paramKey={paramKey} titleDesc={titleDesc} icon={icon} />
-      ),
-    });
+addons.register(ADDON_ID, api => {
+  addons.add(ADDON_ID, {
+    title: 'Selector',
+    type: types.TOOL,
+    match: ({ viewMode }) => viewMode === 'story',
+    render: () => (
+      <Container api={api} />
+    ),
   });
-};
+});
+addons.register('storybook-addon-selector', console.log);
