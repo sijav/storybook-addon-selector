@@ -18,18 +18,23 @@ export interface SelectorOption {
   [key: string]: any;
 }
 
-const mapper = ({ api, state }: Combo): { items: SelectorParams[]; selected: SelectorOption } => {
+const mapper = ({ api, state }: Combo): { items: SelectorParams[]; selecteds: { [key: string]: SelectorOption } } => {
   const story = state.storiesHash[state.storyId];
-  const list = story ? api.getParameters(story.id, PARAM_KEY) : [];
-  const selected = state.addons[PARAM_KEY] || null;
+  const list: SelectorParams[] = story ? api.getParameters(story.id, PARAM_KEY) : [];
+  const selecteds: { [key: string]: SelectorOption | null } = { ...(state.addons[PARAM_KEY] || {}) };
+  list.forEach(item => {
+    if (!selecteds[item.name]) {
+      selecteds[item.name] = item.options.find(option => option.default) || null;
+    }
+  });
 
-  return { items: list || [], selected };
+  return { items: list || [], selecteds };
 };
 
 export function Container(props: { api: API }) {
   return (
     <Consumer filter={mapper}>
-      {({ items, selected }: ReturnType<typeof mapper>) => {
+      {({ items, selecteds }: ReturnType<typeof mapper>) => {
         return (
           <Fragment>
             {items
@@ -38,7 +43,7 @@ export function Container(props: { api: API }) {
                 <Selector
                   item={item}
                   api={props.api}
-                  selected={selected}
+                  selected={selecteds[item.name]}
                   key={`storybook-addon-selector-index-${index}`}
                 />
               ))}
