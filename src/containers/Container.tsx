@@ -33,18 +33,20 @@ export function Container(props: {
   return (
     <Consumer filter={mapper}>
       {({ items, selected }: ReturnType<typeof mapper>) => {
-        return <Fragment>
-          {
-            items.map((item, index) => {
-              if (item.options.length === 0) {
-                return null;
-              } else {
-                return <Selector item={item} api={props.api} selected={selected} />;
-              }
-
-            }).filter(item => item != null)
-          }
-        </Fragment>
+        return (
+          <Fragment>
+            {items
+              .filter(item => item.options && item.options.length)
+              .map((item, index) => (
+                <Selector
+                  item={item}
+                  api={props.api}
+                  selected={selected}
+                  key={`storybook-addon-selector-index-${index}`}
+                />
+              ))}
+          </Fragment>
+        );
       }}
     </Consumer>
   );
