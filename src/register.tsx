@@ -11,4 +11,3 @@ addons.register(ADDON_ID, api => {
     render: () => <Container api={api} />,
   });
 });
-addons.register('storybook-addon-selector', console.log);
