@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-selector",
-  "version": "5.3.9-3",
+  "version": "5.3.9-4",
   "description": "A storybook addon to have selector for your preview",
   "license": "MIT",
   "main": "dist",
