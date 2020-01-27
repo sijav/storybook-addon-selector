@@ -8,7 +8,7 @@ export interface SelectorParams {
   name: string;
   icon: IconsProps['icon'];
   title: string;
-  options: SelectorOption[]
+  options: SelectorOption[];
 }
 
 export interface SelectorOption {
@@ -26,10 +26,7 @@ const mapper = ({ api, state }: Combo): { items: SelectorParams[]; selected: Sel
   return { items: list || [], selected };
 };
 
-
-export function Container(props: {
-  api: API;
-}) {
+export function Container(props: { api: API }) {
   return (
     <Consumer filter={mapper}>
       {({ items, selected }: ReturnType<typeof mapper>) => {

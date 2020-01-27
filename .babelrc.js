@@ -18,5 +18,5 @@ module.exports = {
     ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
     'babel-plugin-macros',
     ['emotion', { sourceMap: true, autoLabel: true }],
-  ]
+  ],
 };

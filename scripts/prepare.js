@@ -17,14 +17,7 @@ function removeDist() {
   shell.rm('-rf', 'dist');
 }
 
-const ignore = [
-  '__mocks__',
-  '__snapshots__',
-  '__testfixtures__',
-  '__tests__',
-  '/tests/',
-  /.+\.test\..+/,
-];
+const ignore = ['__mocks__', '__snapshots__', '__testfixtures__', '__tests__', '/tests/', /.+\.test\..+/];
 
 function cleanup() {
   // remove files after babel --copy-files output
@@ -51,9 +44,7 @@ function cleanup() {
 
 function logError(type, packageJson, errorLogs) {
   log.error(`FAILED (${type}) : ${errorLogs}`);
-  log.error(
-    `FAILED to compile ${type}: ${chalk.bold(`${packageJson.name}@${packageJson.version}`)}`
-  );
+  log.error(`FAILED to compile ${type}: ${chalk.bold(`${packageJson.name}@${packageJson.version}`)}`);
 }
 
 const packageJson = getPackageJson();

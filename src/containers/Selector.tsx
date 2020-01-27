@@ -1,18 +1,20 @@
-import { API } from "@storybook/api";
-import { IconButton, Icons, TooltipLinkList, WithTooltip } from "@storybook/components";
+import { API } from '@storybook/api';
+import { IconButton, Icons, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { Link } from '@storybook/components/dist/tooltip/TooltipLinkList';
 import memoize from 'memoizerific';
 import React, { useLayoutEffect } from 'react';
-import { ADDON_ID, EVENTS, PARAM_KEY } from "../constants";
-import { SelectorOption, SelectorParams } from "./Container";
+import { ADDON_ID, EVENTS, PARAM_KEY } from '../constants';
+import { SelectorOption, SelectorParams } from './Container';
 
-const createSelectorOptions = memoize(10)((option: SelectorOption, change: (option: SelectorOption) => void): Link => ({
-  id: option.id || option.title,
-  title: option.title,
-  onClick: () => {
-    change(option);
-  },
-}));
+const createSelectorOptions = memoize(10)(
+  (option: SelectorOption, change: (option: SelectorOption) => void): Link => ({
+    id: option.id || option.title,
+    title: option.title,
+    onClick: () => {
+      change(option);
+    },
+  }),
+);
 
 const getCurrentlySelectedOption = (
   list: SelectorOption[],
@@ -34,11 +36,7 @@ const getCurrentlySelectedOption = (
   return list.find(i => i.default) || defaultSelected;
 };
 
-export function Selector(props: {
-  api: API;
-  item: SelectorParams;
-  selected: SelectorOption
-}) {
+export function Selector(props: { api: API; item: SelectorParams; selected: SelectorOption }) {
   const { api, item, selected } = props;
 
   const change = (currentSelected: SelectorOption | undefined) => {
@@ -56,18 +54,15 @@ export function Selector(props: {
     return api.emit(`${ADDON_ID}/${item.name}/${EVENTS.DESTROYING}`);
   });
 
-  return <WithTooltip
-    placement="top"
-    trigger="click"
-    tooltip={<TooltipLinkList links={links} />}
-    closeOnClick={true}
-  >
-    <IconButton
-      key={ADDON_ID}
-      active={selectedItem && defaultOption && selectedItem.value !== defaultOption.value}
-      title={item.title}
-    >
-      <Icons icon={item.icon} />
-    </IconButton>
-  </WithTooltip>
+  return (
+    <WithTooltip placement="top" trigger="click" tooltip={<TooltipLinkList links={links} />} closeOnClick={true}>
+      <IconButton
+        key={ADDON_ID}
+        active={selectedItem && defaultOption && selectedItem.value !== defaultOption.value}
+        title={item.title}
+      >
+        <Icons icon={item.icon} />
+      </IconButton>
+    </WithTooltip>
+  );
 }

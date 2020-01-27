@@ -1,29 +1,35 @@
 # Story Selector Addon
+
 The Storybook selector addon can be used to select and share config between stories in Storybook.
 
 [Framework Support same as backgrounds addon](https://github.com/storybookjs/storybook/blob/master/ADDONS_SUPPORT.md)
 
 ## Installation
+
 ```sh
 yarn add --dev storybook-addon-selector
 ```
+
 or
+
 ```sh
 npm i -D storybook-addon-selector
 ```
 
 ## Configuration
+
 Then create a file called `main.js` in your storybook config.
 
 Add following content to it:
 
 ```js
 module.exports = {
-  addons: ['storybook-addon-selector/register']
-}
+  addons: ['storybook-addon-selector/register'],
+};
 ```
 
 ## Usage
+
 Then write your stories like this:
 
 ```js
@@ -39,7 +45,7 @@ export default {
         title: 'title',
         options: [
           { value: 'value1', title: 'option1', default: true },
-          { value: 'value2', title: 'option2' }
+          { value: 'value2', title: 'option2' },
         ],
       },
       {
@@ -48,27 +54,25 @@ export default {
         title: 'title',
         options: [
           { value: 'value1', title: 'option1', default: true },
-          { value: 'value2', title: 'option2' }
+          { value: 'value2', title: 'option2' },
         ],
       },
     ],
   },
 };
 
-export const defaultView = () => (
-  <button>Click me</button>
-);
+export const defaultView = () => <button>Click me</button>;
 ```
 
 Then you can listen to addon channel for selected option
 
 ```js
 addons.getChannel().on('storybook/selector/unique-name/rendered', data => {
-  console.log(data) // { value: 'value1', title: 'option1', default: true }
+  console.log(data); // { value: 'value1', title: 'option1', default: true }
   forceReRender();
 });
 addons.getChannel().on('storybook/selector/unique-name/update', data => {
-  console.log(data) // { value: 'value2', title: 'option2' }
+  console.log(data); // { value: 'value2', title: 'option2' }
 });
 addons.getChannel().on('storybook/selector/unique-name/destroying', () => {
   // do some codes
@@ -88,7 +92,7 @@ addParameters({
       title: 'title',
       options: [
         { value: 'value1', title: 'option1', default: true },
-        { value: 'value2', title: 'option2' }
+        { value: 'value2', title: 'option2' },
       ],
     },
   ],
@@ -102,11 +106,9 @@ import React from 'react';
 
 export default {
   title: 'Button',
-}
+};
 
-export const defaultView = () => (
-  <button>Click me</button>
-);
+export const defaultView = () => <button>Click me</button>;
 defaultView.story = {
   parameters: {
     selector: [
@@ -116,7 +118,7 @@ defaultView.story = {
         title: 'title',
         options: [
           { value: 'value1', title: 'option1', default: true },
-          { value: 'value2', title: 'option2' }
+          { value: 'value2', title: 'option2' },
         ],
       },
     ],
@@ -131,11 +133,9 @@ import React from 'react';
 
 export default {
   title: 'Button',
-}
+};
 
-export const noSelectors = () => (
-  <button>Click me</button>
-);
+export const noSelectors = () => <button>Click me</button>;
 noSelectors.story = {
   parameters: {
     selector: [],

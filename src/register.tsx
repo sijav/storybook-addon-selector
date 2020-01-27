@@ -8,9 +8,7 @@ addons.register(ADDON_ID, api => {
     title: 'Selector',
     type: types.TOOL,
     match: ({ viewMode }) => viewMode === 'story',
-    render: () => (
-      <Container api={api} />
-    ),
+    render: () => <Container api={api} />,
   });
 });
 addons.register('storybook-addon-selector', console.log);
